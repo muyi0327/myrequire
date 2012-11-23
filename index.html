@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>New Web Project</title>
+        <script src="/jsProj/js/myrequire.js"></script>
+    </head>
+    <body>
+        <script>
+            /**
+             * 初始化,baseUrl 和 外部文件载入
+             */
+            require.config({
+                baseUrl:"/jsProj/js",
+                paths : {
+                    'jquery' : {
+                        'url' : "core/jquery-1.7.2",
+                        'exports' : "$"
+                    },
+                    'util' : {
+                        'url' : "core/util",
+                        'exports' : '$util'
+                    }
+                }
+            })
+                
+            require(['require/math','jquery','util'],function(math,$,U){
+                math.addsome();
+                console.log($('body'))
+                console.log(U.type(''))
+            });
+            
+            require(['mylibs/event'],function(E){
+            	console.log(E)
+                E.addEvent(document,'click',function(){
+                	alert(123)
+                })
+            })
+        </script>
+    </body>
+</html>
