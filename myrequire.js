@@ -115,7 +115,7 @@
             return baseUrl + str;
         } else if(str.indexOf('.js')>-1){
 			return str;
-		}else {
+	}else {
             return baseUrl + "/" + str;
         }
     }
