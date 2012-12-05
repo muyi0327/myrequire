@@ -114,7 +114,7 @@
         } else if (isAbsolute(str)) {
             return baseUrl + str;
         } else if(str.indexOf('.js')>-1){
-			return str;
+	    return str;
 	}else {
             return baseUrl + "/" + str;
         }
