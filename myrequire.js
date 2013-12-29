@@ -1,6 +1,8 @@
 (function (Win) {
-    var Rquire = {};
-    var head = document.getElementsByTagName('head')[0],
+    var Rquire = {},
+        head = document.getElementsByTagName('head')[0],
+        scripts = head.getElementsByTagName('script'),
+        mainModule = scripts[scripts.length-1],
         path = window.location.pathname,
         directory = path.substr(0, path.lastIndexOf('/') + 1),
         Modules = {},
@@ -495,6 +497,11 @@
         return '';
     }
 
+    if (mainModule){
+        var msrc = mainModule.dataset && mainModule.dataset.main
+            || mainModule.getAttribute('data-main');
+        Rquire.use(msrc);
+    }
     Win.define = define;
     Win.require = require;
     Win.Rquire = Rquire;
